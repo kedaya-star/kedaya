@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head><title>创建单子</title></head>
+<body>
+<h2>创建单子</h2>
+<form method="post" enctype="multipart/form-data">
+  论文题目: <input type="text" name="title" required><br>
+  论文字数: <input type="text" name="word_count" required><br>
+  学历: <input type="text" name="education" required><br>
+  类型: <select name="category">
+    <option value="论文">论文</option>
+    <option value="毕业设计">毕业设计</option>
+  </select><br>
+  备注: <textarea name="remark"></textarea><br>
+  上传附件: <input type="file" name="attachment"><br>
+  <button type="submit">提交</button>
+</form>
+<a href="{{ url_for('dashboard') }}">返回</a>
+</body>
+</html>

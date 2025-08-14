@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head><title>对话</title></head>
+<body>
+<h2>与 {{ agent.username }} 的对话</h2>
+<ul>
+{% for msg in messages %}
+  <li>{{ '我' if msg.sender_id==current_user.id else agent.username }}: {{ msg.content }}{% if msg.image %}<br><img src="{{ url_for('uploaded_file', filename=msg.image) }}" width="200">{% endif %}</li>
+{% endfor %}
+</ul>
+<form method="post" enctype="multipart/form-data">
+  内容: <input type="text" name="content" required>
+  图片: <input type="file" name="image">
+  <button type="submit">发送</button>
+</form>
+<a href="{{ url_for('dashboard') }}">返回</a>
+</body>
+</html>

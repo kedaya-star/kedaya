@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head><title>管理员面板</title></head>
+<body>
+<h2>欢迎, 管理员 {{ current_user.username }}</h2>
+<h3>代理列表</h3>
+<ul>
+{% for agent in agents %}
+  <li>
+    {{ agent.username }}
+    [<a href="{{ url_for('messages', agent_id=agent.id) }}">对话</a>]
+    [<a href="{{ url_for('ban_user', user_id=agent.id) }}">封禁</a>]
+  </li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('logout') }}">退出</a>
+</body>
+</html>

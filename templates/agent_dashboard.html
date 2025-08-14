@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head><title>代理面板</title></head>
+<body>
+<h2>欢迎, {{ current_user.username }}</h2>
+<a href="{{ url_for('new_order') }}">创建单子</a>
+<h3>我的单子</h3>
+<ul>
+{% for order in orders %}
+  <li>{{ order.title }} - {{ order.category }} - {{ order.created_at.strftime('%Y-%m-%d') }}</li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('messages', agent_id=current_user.id) }}">与管理员对话</a><br>
+<a href="{{ url_for('logout') }}">退出</a>
+</body>
+</html>
